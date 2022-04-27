@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <title>Color Guessing Game</title>
+        <head>
+            <body>
+                <h1>Color Guessing Game</h1>
+                <button type="button" onclick="runGame()">Start Game</button>
+                <script>
+                    const COLORS_ARRAY=['blue', 'cyan', 'gold', 'gray', 'green', 'magenta', 'orange', 'red', 'white', 'yellow']
+
+                    function runGame() {
+                        let guess="";
+                        let correct = false;
+                        let numTries= 0;
+                        const targetIndex= (Math.floor(Math.random()*COLORS_ARRAY.length))
+                        const target= COLORS_ARRAY[targetIndex];
+                        console.log(target);
+
+                    do {
+                         guess = prompt("I am thinking of one of these colors:\n\n" +
+
+                        COLORS_ARRAY + '\n\n What color am I thinking of?\n');                        
+
+                         numTries += 1;
+
+                         if(guess === null) {
+                             alert('the game has been aborted')
+                            return;
+
+                        }
+
+                            correct = checkGuess(guess,target);
+
+                             } while (!correct)  
+
+            
+
+                        alert("Congratulations!!." + "Color is guessed in " + numTries);
+
+}  
+
+                    function checkGuess(guess,target){
+
+                        let correct = false;
+
+                        if (!COLORS_ARRAY.includes(guess)){
+
+                            alert('Sorry I dont recognize your order.\n\nPlease try again.');
+
+                       }else if (guess>target){
+
+                           alert('Sorry Your Guess is incorrect!.\n\nHint:Your color is higher than mine.\n\nPlease try again ');
+
+                       }else if (guess<target){
+
+                           alert('Sorry Your Guess is incorrect!.\n\nHint:Your color is lower than mine.\n\nPlease try again ');
+
+                       } else {
+
+                           correct=true;
+
+                       }
+
+                       return correct;
+
+                    }
+
+                    document.body.style.background = guess;
+
+                </script>
+
+            </body>
+
+        </head>
+
+    </head>
+
+</html>
